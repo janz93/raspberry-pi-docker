@@ -20,6 +20,15 @@ services:
             - monitoring
         volumes:
             - influxdb-volume:/var/lib/influxdb
+    speedtest:
+        image: atribe/speedtest-for-influxdb-and-grafana:latest
+        container_name: speedtest
+        network_mode: host
+        volumes:
+        - ./speedtest/config.ini:/src/config.ini
+        depends_on:
+        - influxdb
+        restart: always
 networks:
     monitoring:
 volumes:
