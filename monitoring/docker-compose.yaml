@@ -1,7 +1,7 @@
 version: "3"
 services:
     grafana:
-        image: grafana/grafana
+        image: grafana/grafana-arm32v7-linux
         container_name: grafana
         restart: always
         ports:
