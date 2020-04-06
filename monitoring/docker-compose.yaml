@@ -28,6 +28,7 @@ services:
             - monitoring
         volumes:
             - influxdb-volume:/var/lib/influxdb
+            - ./.docker-compose/influxdb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     speedtest:
         image: atribe/speedtest-for-influxdb-and-grafana:latest
         container_name: speedtest
@@ -43,7 +44,7 @@ services:
         links:
             - influxdb
         volumes:
-            - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+            - ./.docker-compose/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
 networks:
     monitoring:
 volumes:
